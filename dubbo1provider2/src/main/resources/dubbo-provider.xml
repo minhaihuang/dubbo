@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <dubbo:application name="dubbo1provider2"/>
+    <dubbo:registry address="zookeeper://192.168.1.100:2181"/>
+    <dubbo:provider cluster="failfast"/>
+    <bean id="userService" class="com.hhm.dubbo1.provider2.UserServiceImpl"/>
+    <dubbo:service interface="com.hhm.dubbo2.api.UserService" ref="userService"/>
+</beans>
